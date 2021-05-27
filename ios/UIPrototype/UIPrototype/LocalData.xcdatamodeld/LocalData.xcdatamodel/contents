@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DataObject" representedClassName="DataObject" syncable="YES">
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="data" attributeType="Binary"/>
+        <attribute name="pubCert" attributeType="Binary"/>
+        <relationship name="topic" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="objects" inverseEntity="Topic"/>
+    </entity>
+    <entity name="Signature" representedClassName="Signature" syncable="YES">
+        <attribute name="sharedTopicID" optional="YES" attributeType="String"/>
+        <attribute name="signature" attributeType="Binary"/>
+        <relationship name="topic" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="signatures" inverseEntity="Topic"/>
+    </entity>
+    <entity name="Topic" representedClassName="Topic" syncable="YES">
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="pubCert" attributeType="Binary"/>
+        <relationship name="objects" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="DataObject" inverseName="topic" inverseEntity="DataObject"/>
+        <relationship name="signatures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Signature" inverseName="topic" inverseEntity="Signature"/>
+    </entity>
+    <elements>
+        <element name="DataObject" positionX="166.5804443359375" positionY="-23.94000244140625" width="128" height="89"/>
+        <element name="Signature" positionX="-321.6492919921875" positionY="9.21429443359375" width="139.6470947265625" height="74"/>
+        <element name="Topic" positionX="-63" positionY="-18" width="128" height="104"/>
+    </elements>
+</model>
